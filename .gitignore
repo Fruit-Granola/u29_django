@@ -3,6 +3,4 @@
 __pycache__
 *.py[co]
 db.sqlite3
-env
-train_x.csv
-train_y.csv
+README.md
