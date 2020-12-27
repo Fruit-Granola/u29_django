@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\amil\u29_django\django-csv-upload-example\env
+set VIRTUAL_ENV=C:\Users\amil\u29ds_django\env
 
 if not defined PROMPT set PROMPT=$P$G
 
