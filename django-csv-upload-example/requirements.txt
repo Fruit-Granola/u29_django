@@ -1,5 +1,6 @@
-Django==2.1.4
+django-toolbelt
 pytz==2018.7
 NumPy==1.19.0
 pandas==1.2.0
 scikit-learn==0.24.0
+
