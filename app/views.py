@@ -14,7 +14,7 @@ class UploadView(FormView):
     def form_valid(self, form):
         csvfile = form.cleaned_data['file']
 
-        # 入力データから予測を立てる
+        # 入力データから予測データを出力
         trainer = Trainer()
         x_train, model = trainer.Process()
 
