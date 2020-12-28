@@ -15,18 +15,18 @@ class Trainer:
             if self.x_train[column].nunique() < 2:
                 self.x_train = self.x_train.drop(column, axis=1)
 
-        self.x_train = self.x_train.fillna(0)
-
         for column in self.x_train.columns:
             if  self.x_train[column].dtype == "object":
                 self.x_train = self.x_train.drop(column, axis=1)
+
+        self.x_train = self.x_train.fillna(0)
 
         self.y_train_array = np.array(self.y_train["応募数 合計"])
         self.X_train_array = np.array(self.x_train)
 
         self.rfr = RandomForestRegressor(random_state=0)
         self.rfr.fit(self.X_train_array, self.y_train_array)
-        
+
         return self.x_train, self.rfr
 
 # 学習されたモデルから予測を出す
