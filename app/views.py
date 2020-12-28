@@ -11,7 +11,7 @@ class UploadView(FormView):
     form_class = UploadForm
     template_name = 'app/UploadForm.html'
 
-    def FormToCsv(self, form):
+    def form_valid(self, form):
         csvfile = form.cleaned_data['file']
 
         # 入力データから予測を立てる
