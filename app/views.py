@@ -7,13 +7,11 @@ from django.views.generic import FormView
 from .forms import UploadForm
 from .predict import Trainer, Predictor
 
-
-# Create your views here.
 class UploadView(FormView):
     form_class = UploadForm
     template_name = 'app/UploadForm.html'
 
-    def form_valid(self, form):
+    def FormToCsv(self, form):
         csvfile = form.cleaned_data['file']
 
         # 入力データから予測を立てる

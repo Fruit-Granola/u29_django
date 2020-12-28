@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 
+# 学習するモデル
 class Trainer:
     def __init__(self):
         self.x_train = pd.read_csv("train_x.csv", low_memory=False)
@@ -9,20 +10,26 @@ class Trainer:
 
     def Process(self):
         self.x_train = self.x_train.drop("お仕事No.", axis=1)
+
         for column in self.x_train.columns:
             if self.x_train[column].nunique() < 2:
                 self.x_train = self.x_train.drop(column, axis=1)
+
         self.x_train = self.x_train.fillna(0)
+
         for column in self.x_train.columns:
             if  self.x_train[column].dtype == "object":
                 self.x_train = self.x_train.drop(column, axis=1)
+
         self.y_train_array = np.array(self.y_train["応募数 合計"])
         self.X_train_array = np.array(self.x_train)
 
         self.rfr = RandomForestRegressor(random_state=0)
         self.rfr.fit(self.X_train_array, self.y_train_array)
+        
         return self.x_train, self.rfr
 
+# 学習されたモデルから予測を出す
 class Predictor:
     def __init__(self, csv):
         self.x_data = pd.read_csv(csv, low_memory=False)
